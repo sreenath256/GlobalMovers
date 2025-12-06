@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Image3 } from "../../assets";
+import { Image3 } from "../../../assets";
 
 const Counter = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -40,7 +40,7 @@ const Counter = ({ end, duration = 2000 }) => {
 const WhoWeAre = () => {
   return (
     <div className="w-full bg-white px-4 sm:px-6 lg:px-28 overflow-hidden py-10">
-      
+
       {/* TOP SECTION */}
       <div className="
         grid grid-cols-1 md:grid-cols-5 

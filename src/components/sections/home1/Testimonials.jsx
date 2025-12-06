@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Image2 } from "../../assets";
+import { Image2 } from "../../../assets";
 
 const reviews = [
   {

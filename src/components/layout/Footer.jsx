@@ -1,22 +1,22 @@
 import React from "react";
 import { FaInstagram, FaFacebookF, FaXTwitter, FaGoogle } from "react-icons/fa6";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import { GlobalLogo } from "../../assets";
+import { GlobalLogo, GlobalLogo2 } from "../../assets";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-white ">
+    <footer className="w-full bg-[#1c1f2e] pt-10">
       <div className="
         px-6 lg:px-28
-        grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 
+        grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
         gap-10 md:gap-14
       ">
 
         {/* LOGO + TEXT */}
-        <div className="space-y-4">
-          <img src={GlobalLogo} alt="logo" className="h-16 md:h-20" />
+        <div className="space-y-4 pb-5">
+          <img src={GlobalLogo2} alt="logo" className="h-16 md:h-20" />
 
-          <p className="text-gray-600 text-sm md:text-base leading-snug max-w-xs">
+          <p className="text-gray-300 text-sm md:text-base leading-snug max-w-xs">
             Global Icon Packers & Movers is one of UAE’s premier relocation and
             storage service providers. Established in 2008 with the vision to
             deliver high-standard relocation and storage services across the UAE.
@@ -27,7 +27,7 @@ const Footer = () => {
             {[FaInstagram, FaFacebookF, FaXTwitter, FaGoogle].map((Icon, i) => (
               <div
                 key={i}
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-100 flex items-center justify-center"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-300 flex items-center justify-center"
               >
                 <Icon className="text-lg md:text-xl text-black" />
               </div>
@@ -36,12 +36,12 @@ const Footer = () => {
         </div>
 
         {/* CONTACT - MOVERS */}
-        <div className="space-y-4">
-          <h3 className="text-xl md:text-2xl font-semibold text-black">
-            Contact Us - Movers
+        <div className="space-y-4 pb-5">
+          <h3 className="text-xl md:text-2xl font-semibold text-gray-300">
+            Contact Us 
           </h3>
 
-          <ul className="space-y-4 text-gray-700 text-base md:text-lg">
+          <ul className="space-y-4 text-gray-300 text-base md:text-lg">
 
             <li className="flex items-start gap-3">
               <FaPhoneAlt className="text-primary mt-1" />
@@ -59,38 +59,6 @@ const Footer = () => {
             <li className="flex items-start gap-3">
               <FaMapMarkerAlt className="text-primary mt-1" />
               <p>
-                Falcon Tower, Office 307, <br />
-                Khalidiya Street, Abu Dhabi, UAE
-              </p>
-            </li>
-
-          </ul>
-        </div>
-
-        {/* CONTACT - STORAGE */}
-        <div className="space-y-4">
-          <h3 className="text-xl md:text-2xl font-semibold text-black">
-            Contact Us - Storage
-          </h3>
-
-          <ul className="space-y-4 text-gray-700 text-base md:text-lg">
-
-            <li className="flex items-start gap-3">
-              <FaPhoneAlt className="text-primary mt-1" />
-              <div>
-                <p>+971 02- 4417357</p>
-                <p>+971 569-393-015</p>
-              </div>
-            </li>
-
-            <li className="flex items-start gap-3">
-              <FaEnvelope className="text-primary mt-1" />
-              <p>storage@globaliconmoversae.com</p>
-            </li>
-
-            <li className="flex items-start gap-3">
-              <FaMapMarkerAlt className="text-primary mt-1" />
-              <p>
                 Al-Sireef Street, Compound 22, <br />
                 Musaffah-M20, Abu Dhabi, UAE
               </p>
@@ -99,13 +67,15 @@ const Footer = () => {
           </ul>
         </div>
 
+       
+
         {/* QUICK LINKS */}
         <div className="space-y-4">
-          <h3 className="text-xl md:text-2xl font-semibold text-black">
+          <h3 className="text-xl md:text-2xl font-semibold text-gray-300">
             Quick Links
           </h3>
 
-          <ul className="space-y-3 text-gray-700 text-base md:text-lg">
+          <ul className="space-y-3 text-gray-300 text-base md:text-lg">
             <li>Home</li>
             <li>About</li>
             <li>Our Services</li>
@@ -121,7 +91,7 @@ const Footer = () => {
         border-t py-6 px-6 lg:px-28 
         flex flex-col md:flex-row 
         justify-center text-center 
-        text-gray-600 text-sm md:text-lg
+        text-gray-300 text-sm md:text-lg
       ">
         <p>
           Copyright © {new Date().getFullYear()}

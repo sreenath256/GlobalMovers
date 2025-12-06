@@ -1,5 +1,5 @@
-import { BannerImage } from "../../assets";
-import Button from "../ui/Button";
+import { BannerImage } from "../../../assets";
+import Button from "../../ui/Button";
 
 const Hero = () => {
   return (

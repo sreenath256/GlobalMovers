@@ -5,7 +5,7 @@ import {
     PenLine,
     ShieldCheck
 } from "lucide-react";
-import { Image4 } from "../../assets";
+import { Image4 } from "../../../assets";
 
 const HowWeWork = () => {
     const features = [

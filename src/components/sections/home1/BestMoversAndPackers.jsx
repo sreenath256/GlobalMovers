@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image2 } from "../../assets";
+import { Image2 } from "../../../assets";
 
 const tabs = [
   { title: "100% Safe and Secure", img: Image2 },

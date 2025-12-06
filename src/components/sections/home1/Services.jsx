@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image2 } from "../../assets";
+import { Image2 } from "../../../assets";
 
 const services = [
     {
@@ -77,7 +77,7 @@ const Services = () => {
                         max-w-md md:ml-auto
                         text-start md:text-end
                     ">
-                        Global Icon Movers makes every move in the UAE smooth and stress-free, 
+                        Global Icon Movers makes every move in the UAE smooth and stress-free,
                         with a dedicated team providing trusted relocation services and top-quality care.
                     </p>
                 </div>
