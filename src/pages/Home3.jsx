@@ -8,14 +8,16 @@ import Process from '../components/sections/home3/Process'
 import Testimonial from '../components/sections/home3/Testimonial'
 import FAQ from '../components/sections/home3/Faq'
 import Footer from '../components/layout/Footer'
+import Counter from '../components/sections/home3/Counter'
 const Home3 = () => {
   return (
     <div>
       <Header3 />
       <Hero />
+      <Counter />
+      <Services />
       <AboutUs />
       <WhyChooseUs />
-      <Services />
       <Process />
       <Testimonial/>
       <FAQ/>

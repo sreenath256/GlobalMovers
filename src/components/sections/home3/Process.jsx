@@ -35,14 +35,6 @@ export default function Process() {
       <div className="w-11/12 mx-auto">
         {/* Top Section */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Left - Image */}
-          <div>
-            <img
-              src={Image8}
-              alt="Professional movers with boxes"
-              className="w-full shadow-lg"
-            />
-          </div>
 
           {/* Right - Content */}
           <div>
@@ -54,6 +46,14 @@ export default function Process() {
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed">
               A clear, step-by-step approach ensures a seamless move. Each home shifting project starts with a detailed inspection, followed by an accurate quote and careful assignment of skilled movers who handle belongings with expert care at every stage.            </p>
+          </div>
+          {/* Left - Image */}
+          <div>
+            <img
+              src={Image8}
+              alt="Professional movers with boxes"
+              className="w-full shadow-lg"
+            />
           </div>
         </div>
 
