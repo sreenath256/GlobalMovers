@@ -1,15 +1,15 @@
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
-const ContactForm = () => {
+const ContactForm = ({ title="Contact Us", desc="Looking for professional storage and moving services. Let Global Icon Movers handle everything so you can focus on what matters. Reach out today for a free quote." }) => {
     return (
         <div className="flex flex-col items-end">
-            <div className="bg-white text-black p-8 rounded-3xl w-full max-w-md shadow-2xl">
-                <h2 className="text-2xl font-semibold mb-2 uppercase leading-snug text-center">
-                    Get a Quote
+            <div className="bg-white text-black p-8 rounded-3xl w-full max-w-md shadow-2xl mx-auto">
+                <h2 className="text-3xl md:text-3xl font-medium mb-2 uppercase leading-snug text-center">
+                    {title}
                 </h2>
-                <p className="text-gray-500 text-sm mb-6 text-center">
-                    Fill out the form below and we will get back to you shortly.
+                <p className="text-gray-500 text-base md:text-lg mb-6 text-center">
+                    {desc}
                 </p>
 
                 <form className="space-y-4">
@@ -18,7 +18,7 @@ const ContactForm = () => {
                         <input
                             type="text"
                             placeholder="Name"
-                            className="w-full bg-gray-100 border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-gray-300 outline-none"
+                            className="w-full bg-gray-100 border-none rounded-lg px-4 py-3 text-base  focus:ring-2 focus:ring-gray-300 outline-none"
                         />
                     </div>
                     <div>
@@ -52,7 +52,7 @@ const ContactForm = () => {
                         <label className="sr-only">Service</label>
                         <div className="relative">
                             <select
-                                className="w-full bg-gray-100 border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-gray-300 outline-none appearance-none text-gray-500"
+                                className="w-full bg-gray-100 border-none rounded-lg px-4 py-3 text-base focus:ring-2 focus:ring-gray-300 outline-none appearance-none text-gray-500"
                             >
                                 <option value="" disabled selected>Select Service</option>
                                 <option value="moving">Moving</option>
@@ -72,7 +72,7 @@ const ContactForm = () => {
                     </button>
                 </form>
 
-                <div className="flex justify-center items-center mt-6 text-xs text-gray-500 font-medium uppercase">
+                <div className="flex justify-center items-center mt-6 text-sm text-gray-500 font-medium uppercase">
                     <p className="text-center">Detailed Quote? <a href="#" className="hover:underline text-black">Contact Sales</a></p>
                 </div>
             </div>

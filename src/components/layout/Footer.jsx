@@ -1,105 +1,98 @@
-import React from "react";
-import { FaInstagram, FaFacebookF, FaXTwitter, FaGoogle } from "react-icons/fa6";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import { GlobalLogo, GlobalLogo2 } from "../../assets";
+import { Facebook, Twitter, Linkedin, Instagram, ArrowRight, Youtube, MapPin, Phone, Smartphone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { GlobalLogo } from '../../assets';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
-  return (
-    <footer className="w-full bg-[#1c1f2e] pt-10">
-      <div className="
-        px-6 lg:px-28
-        grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
-        gap-10 md:gap-14
-      ">
+    return (
+        <footer className="bg-white text-black pt-20 pb-10 font-poppins">
+            <div className="w-11/12 mx-auto">
 
-        {/* LOGO + TEXT */}
-        <div className="space-y-4 pb-5">
-          <img src={GlobalLogo2} alt="logo" className="h-16 md:h-20" />
+                {/* Top Row - Grid Layout */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 ">
 
-          <p className="text-gray-300 text-sm md:text-base leading-snug max-w-xs">
-            Global Icon Packers & Movers is one of UAE’s premier relocation and
-            storage service providers. Established in 2008 with the vision to
-            deliver high-standard relocation and storage services across the UAE.
-          </p>
 
-          {/* SOCIAL ICONS */}
-          <div className="flex items-center gap-4 mt-6">
-            {[FaInstagram, FaFacebookF, FaXTwitter, FaGoogle].map((Icon, i) => (
-              <div
-                key={i}
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-300 flex items-center justify-center"
-              >
-                <Icon className="text-lg md:text-xl text-black" />
-              </div>
-            ))}
-          </div>
-        </div>
+                    <div>
+                        <img src={GlobalLogo} alt="Global Movers Logo" className="h-16 md:h-20 w-auto" />
+                        <p className="text-gray-700 text-sm">Global Icon Packers & Movers is one of UAE’s premier relocation and storage service providers. In 2008 Global Icon Packers & Movers was established with the vision of delivering high-standard relocation and storage services throughout United Arab Emirates.</p>
+                    </div>
 
-        {/* CONTACT - MOVERS */}
-        <div className="space-y-4 pb-5">
-          <h3 className="text-xl md:text-2xl font-semibold text-gray-300">
-            Contact Us 
-          </h3>
+                    {/* Menu Column */}
+                    <div className="flex flex-col gap-4 md:gap-8">
+                        <h3 className="text-xl font-normal uppercase">Menu</h3>
+                        <ul className="space-y-3 text-base text-gray-700">
+                            <li><Link to="/" className="hover:text-black transition-colors">Home</Link></li>
+                            <li><Link to="/storage-solutions-in-abu-dhabi" className="hover:text-black transition-colors">About Us</Link></li>
+                            <li><Link to="/services" className="hover:text-black transition-colors">Our Services</Link></li>
+                            <li><Link to="/gallery" className="hover:text-black transition-colors">Gallery</Link></li>
+                            <li><Link to="/blog" className="hover:text-black transition-colors">Blog</Link></li>
+                            <li><Link to="/contact-us" className="hover:text-black transition-colors">Contact Us</Link></li>
+                        </ul>
+                    </div>
 
-          <ul className="space-y-4 text-gray-300 text-base md:text-lg">
 
-            <li className="flex items-start gap-3">
-              <FaPhoneAlt className="text-primary mt-1" />
-              <div>
-                <p>+971 02- 4417357</p>
-                <p>+971 509-393-081</p>
-              </div>
-            </li>
+                    {/* Contact Column */}
+                    <div className="flex flex-col gap-4 md:gap-8">
+                        <h3 className="text-xl font-normal uppercase">Contact</h3>
+                        <div className="space-y-4 text-base text-gray-700">
+                            <a href="#" className="flex items-start gap-3 hover:text-black transition-colors">
+                                <MapPin className="w-5 h-5 shrink-0 mt-1 text-primary" />
+                                <p>Al-Sireef Street, <br />Musaffah-M20, Abu Dhabi, UAE</p>
+                            </a>
 
-            <li className="flex items-start gap-3">
-              <FaEnvelope className="text-primary mt-1" />
-              <p>info@globaliconmoversae.com</p>
-            </li>
+                            <a href="tel:+971024417357" className="flex items-center gap-3 hover:text-black transition-colors group">
+                                <Phone className="w-5 h-5 shrink-0 text-primary" />
+                                <span className="relative">
+                                    +971 02-4417357
+                                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                                </span>
+                            </a>
 
-            <li className="flex items-start gap-3">
-              <FaMapMarkerAlt className="text-primary mt-1" />
-              <p>
-                Al-Sireef Street, Compound 22, <br />
-                Musaffah-M20, Abu Dhabi, UAE
-              </p>
-            </li>
+                            <div className="flex items-start gap-3">
+                                <Smartphone className="w-5 h-5 shrink-0 mt-1 text-primary" />
+                                <div className="flex flex-col items-start">
+                                    <a href="tel:+971509393081" className="hover:text-black transition-colors relative group">
+                                        +971 509-393-081 - Moving
+                                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                                    </a>
+                                    <a href="tel:+971569393015" className="hover:text-black transition-colors relative group">
+                                        +971 569-393-015 - Storage
+                                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                                    </a>
+                                </div>
+                            </div>
 
-          </ul>
-        </div>
+                            <a href="mailto:info@globaliconmoversae.com" className="flex items-center gap-3 hover:text-black transition-colors group">
+                                <Mail className="w-5 h-5 shrink-0 text-primary" />
+                                <span className="relative">
+                                    info@globaliconmoversae.com
+                                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
 
-       
+                </div>
 
-        {/* QUICK LINKS */}
-        <div className="space-y-4">
-          <h3 className="text-xl md:text-2xl font-semibold text-gray-300">
-            Quick Links
-          </h3>
+                {/* Bottom Row - Copyright & Socials */}
+                <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-transparent">
+                    <p className="text-sm font-medium uppercase tracking-wide">
+                        Copyright © 2025 Globaliconmovers
+                    </p>
 
-          <ul className="space-y-3 text-gray-300 text-base md:text-lg">
-            <li>Home</li>
-            <li>About</li>
-            <li>Our Services</li>
-            <li>Blog</li>
-            <li>Gallery</li>
-            <li>Contact Us</li>
-          </ul>
-        </div>
-      </div>
+                    <div className="flex items-center gap-6 mt-6 md:mt-0">
+                        <a href="https://www.facebook.com/globaliconmoversabudhabi/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Facebook className="w-6 h-6 fill-black" strokeWidth={0} /></a>
+                        <a href="https://x.com/movers_icon" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><FaXTwitter className="w-6 h-6 fill-black" strokeWidth={0} /></a>
+                        <a href="https://www.linkedin.com/company/global-icon-movers/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Linkedin className="w-6 h-6 fill-black" strokeWidth={0} /></a>
+                        <a href="https://www.youtube.com/@globaliconmovers9079" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Youtube className="w-6 h-6" /></a>
+                        <a href="https://www.instagram.com/globaliconmovers/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Instagram className="w-6 h-6" /></a>
+                        <a href="https://maps.app.goo.gl/mwpFqwmjq8MDYqR59" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><MapPin className="w-6 h-6" /></a>
+                    </div>
+                </div>
 
-      {/* BOTTOM BAR */}
-      <div className="
-        border-t py-6 px-6 lg:px-28 
-        flex flex-col md:flex-row 
-        justify-center text-center 
-        text-gray-300 text-sm md:text-lg
-      ">
-        <p>
-          Copyright © {new Date().getFullYear()}
-          {" "}Global Icon Movers. All rights reserved.
-        </p>
-      </div>
-    </footer>
-  );
+            </div>
+        </footer>
+    );
 };
 
 export default Footer;

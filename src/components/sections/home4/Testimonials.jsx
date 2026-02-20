@@ -1,10 +1,8 @@
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import { ArrowLeft, ArrowRight, Quote } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Star } from 'lucide-react';
 
-import { GlobalLogo } from '../../../assets';
-import { Client1, Client2, Client3, Client4, Client5, Client6, Client7, Client8, Client9, Client10 } from '../../../assets';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -41,29 +39,28 @@ const Testimonials = () => {
         }
     ];
 
-    const clients = [Client1, Client2, Client3, Client4, Client5, Client6, Client7, Client8, Client9, Client10];
 
 
 
     return (
-        <section className=" font-poppins text-black w-11/12 mx-auto py-20 rounded-3xl  overflow-hidden">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+        <section className=" font-poppins text-black w-11/12 mx-auto pt-16 md:pt-24 rounded-3xl overflow-hidden">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-16 gap-4 md:gap-8">
                 <div className=''>
-                    <h2 className="text-4xl md:text-6xl font-medium uppercase leading-tight ">
-                        What Our Customers Are <br /> Saying About Our Services?
+                    <h2 className="text-3xl md:text-6xl text-center font-medium uppercase leading-tight ">
+                        What Our Customers Are <br className='hidden md:block' /> Saying About Our Services?
                     </h2>
                 </div>
                 {/* Custom Navigation Buttons */}
                 <div className="flex items-center gap-4">
                     <button
                         onClick={() => swiperRef.current?.slidePrev()}
-                        className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white hover:shadow-md transition-all text-gray-600 hover:text-primary hover:bg-primary"
+                        className="w-14 h-14 rounded-full bg-white border border-black hover:border-primary hover:text-white text-black flex items-center justify-center hover:bg-primary transition-colors"
                     >
                         <ArrowLeft className="w-6 h-6" />
                     </button>
                     <button
                         onClick={() => swiperRef.current?.slideNext()}
-                        className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white hover:shadow-md transition-all text-gray-600 hover:text-primary hover:bg-primary"
+                        className="w-14 h-14 rounded-full bg-white border border-black hover:border-primary hover:text-white text-black flex items-center justify-center hover:bg-primary transition-colors"
                     >
                         <ArrowRight className="w-6 h-6" />
                     </button>
@@ -71,7 +68,7 @@ const Testimonials = () => {
 
             </div>
 
-            <div className="relative mb-20">
+            <div className="relative  md:mb-20">
 
                 <Swiper
                     modules={[Navigation, Autoplay]}
@@ -83,6 +80,9 @@ const Testimonials = () => {
                     breakpoints={{
                         768: {
                             slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 3,
                         }
                     }}
                     autoplay={{
@@ -94,54 +94,28 @@ const Testimonials = () => {
                 >
                     {testimonials.map((item) => (
                         <SwiperSlide key={item.id} className="!h-auto">
-                            <div className="bg-white p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm border border-gray-600 relative">
+                            <div className="bg-white p-10 rounded-3xl h-full flex flex-col justify-start md:justify-between shadow-sm border border-gray-600 relative">
                                 {/* Quote Icon */}
                                 <div className="content-start mb-6">
-                                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                                        <Quote className="w-6 h-6 text-white fill-white" />
+                                    <div className="flex items-center gap-3 pb-5">
+                                        <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 font-bold text-lg">
+                                            {item.name.charAt(0)}
+                                        </div>
+                                        <span className="text-gray-900 font-medium text-lg">{item.name}</span>
+                                    </div>
+                                    <div className="flex gap-1">
+                                        {[1, 2, 3, 4, 5].map((star) => (
+                                            <Star key={star} className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+                                        ))}
                                     </div>
                                 </div>
-                                <p className="text-gray-600 leading-relaxed text-lg mb-8">
+                                <p className="text-gray-600 leading-relaxed text-base md:text-lg mb-8">
                                     {item.text}
                                 </p>
-                                <div className="flex items-center gap-2 text-gray-500 font-medium">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
-                                    <span>{item.name}</span>
-                                </div>
                             </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>
-            </div>
-
-            {/* Client Icons Marquee */}
-            <div className="w-full py-10 border-t border-gray-200 overflow-hidden relative">
-                <style>
-                    {`
-                        @keyframes marquee {
-                            0% { transform: translateX(0); }
-                            100% { transform: translateX(-50%); }
-                        }
-                        .animate-marquee {
-                            animation: marquee 30s linear infinite;
-                        }
-                        .animate-marquee:hover {
-                            animation-play-state: paused;
-                        }
-                    `}
-                </style>
-
-                {/* Gradient Masks */}
-                <div className="absolute top-0 left-0 w-32 h-full z-10 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
-                <div className="absolute top-0 right-0 w-32 h-full z-10 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
-
-                <div className="flex w-max animate-marquee">
-                    {[...clients, ...clients].map((logo, index) => (
-                        <div key={index} className="mx-8 h-32 flex items-center justify-center transition-all duration-300">
-                            <img src={logo} alt={`Client ${index}`} className="max-w-full max-h-full object-contain" />
-                        </div>
-                    ))}
-                </div>
             </div>
         </section>
     );

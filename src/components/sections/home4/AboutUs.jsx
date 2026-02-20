@@ -1,154 +1,141 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Package, Users, ShieldCheck, Video, Thermometer, Lock, DollarSign } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { StorageImage } from '../../../assets';
 
 const AboutUs = () => {
     const swiperRef = useRef(null);
-
     const features = [
         {
             id: '01',
-            title: '100% Safe and Secure',
-            description: 'We ensure your belongings are protected during every move.',
+            title: 'PROFESSIONAL PACKING & SAFE HANDLING',
+            description: 'Expert packing and careful handling ensure belongings remain protected during moving, loading, unloading, and storage.',
+            icon: Package
         },
         {
             id: '02',
-            title: '24/7 Services',
-            description: 'We are available 24/7 to assist you with any questions or concerns.',
+            title: 'EXPERIENCED & TRUSTED TEAM',
+            description: 'A skilled team with proven experience in residential, commercial, and storage services, delivering consistent and reliable results.',
+            icon: Users
         },
         {
             id: '03',
-            title: 'Professional Packing',
-            description: 'We provide professional packing services to ensure your belongings are protected during every move.',
+            title: 'MOVING EXPERTISE YOU CAN TRUST',
+            description: 'Systematic relocation planning to ensure smooth, timely, and well-coordinated moves.',
+            icon: ShieldCheck
         },
         {
             id: '04',
-            title: 'Safe Handling',
-            description: 'We handle your belongings with care and attention to detail to ensure they arrive safely at their destination.',
+            title: '24/7 SECURITY & CCTV SURVEILLANCE',
+            description: 'Round-the-clock security with monitored CCTV systems to safeguard belongings during transit and while in storage.',
+            icon: Video
         },
         {
             id: '05',
-            title: 'Experienced Team',
-            description: 'Our team of professionals is dedicated to providing you with the best possible service.',
+            title: 'CLIMATE-CONTROLLED STORAGE FACILITIES',
+            description: 'Fully air-conditioned storage zones designed to protect furniture, documents, and sensitive items from heat and humidity.',
+            icon: Thermometer
         },
         {
             id: '06',
-            title: 'Transparent Pricing',
-            description: 'We provide transparent pricing to ensure you know exactly what you are paying for.',
+            title: 'LOCKABLE & DUST-FREE UNITS',
+            description: 'Secure, lockable storage units maintained in clean, dust-free, and pest-controlled environments for added protection.',
+            icon: Lock
+        },
+        {
+            id: '07',
+            title: 'TRANSPARENT & AFFORDABLE PRICING',
+            description: 'Clear pricing structures for moving and storage services, ensuring reliability and value without hidden costs.',
+            icon: DollarSign
         }
     ];
 
-    const slides = [
-        { id: 1, title: 'Transport', image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop' },
-        { id: 2, title: 'Warehousing', image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop' },
-        { id: 3, title: 'Distribution', image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070&auto=format&fit=crop' },
-        { id: 4, title: 'Freight', image: 'https://images.unsplash.com/photo-1620619767323-b95a89183081?q=80&w=2070&auto=format&fit=crop' }
-    ];
-
     return (
-        <section className="bg-white text-black py-20 font-poppins text-black overflow-hidden w-11/12 mx-auto">
+        <section className="bg-white text-black pt-16 md:pt-24 font-poppins overflow-hidden w-11/12 mx-auto">
             <div className="w-full">
-                <h2 className="text-4xl text-center md:text-6xl font-medium uppercase leading-tight max-w-4xl mx-auto mb-24">
-                    Moving Forward With Experience And Innovation
+                <h2 className="text-3xl md:text-6xl text-center font-medium uppercase leading-tight max-w-4xl mx-auto md:mb-16">
+                    SMART MOVING & SECURE STORAGE SOLUTIONS
                 </h2>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 ">
-                    {/* Left Feature List */}
-                    <div className="space-y-10">
-                        {features.map((feature, index) => (
-                            <motion.div
-                                key={feature.id}
-                                className="group"
-                                initial={{ x: -50, opacity: 0 }}
-                                whileInView={{ x: 0, opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                            >
-                                <div className="flex flex-col items-start ">
-                                    <div className='flex items-center gap-4 pb-3'>
-
-                                        <span className="text-3xl font-bold">{feature.id}</span>
-                                        <div className="h-px bg-black w-12"></div>
-                                        <h3 className="text-2xl font-medium uppercase">{feature.title}</h3>
-                                    </div>
-                                    <p className="text-gray-600 text-sm max-w-xl text-left">{feature.description}</p>
-                                </div>
-
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Right Image */}
-                    <div className="relative h-[600px] w-full bg-gray-200 rounded-lg overflow-hidden">
-                        <div className={`absolute inset-0 bg-cover bg-center`} style={{ backgroundImage: `url(${StorageImage})` }}></div>
-                    </div>
-                </div>
-
                 {/* Bottom Slider Section */}
-                <div className="relative mt-12 md:mt-0">
-                    {/* Swiper Controls & Counter - Positioned absolute or flex */}
-                    <div className="flex flex-col md:flex-row items-end md:items-center gap-8 mb-8 md:mb-0">
+                <div className="relative mt-8">
+                    {/* Swiper Controls & Counter */}
+                    <div className="flex flex-col md:flex-row items-end md:items-center gap-8 mb-8 md:mb-12">
+                        {/* Wrapper for controls to position them nicely */}
+                        <div className="w-full flex justify-between items-center px-2">
 
-                        {/* Navigation Buttons */}
-                        <div className="flex flex-col gap-4 md:absolute md:-left-20 md:top-1/2 md:-translate-y-1/2 z-10">
-                            <button
-                                onClick={() => swiperRef.current?.slidePrev()}
-                                className="w-14 h-14 rounded-full bg-[#ff2d0d] text-white flex items-center justify-center hover:bg-black transition-colors"
-                            >
-                                <ArrowLeft className="w-6 h-6" />
-                            </button>
-                            <button
-                                onClick={() => swiperRef.current?.slideNext()}
-                                className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center hover:bg-[#ff2d0d] transition-colors"
-                            >
-                                <ArrowRight className="w-6 h-6" />
-                            </button>
+                            {/* Counter or Title (Optional, keeping it clean or adding if needed) */}
+                            {/* For now, just utilizing the space or we can center the buttons if desired. 
+                                 Based on previous code, there was a counter. I'll keep the buttons and maybe align them.
+                             */}
+                            <div className='block'></div>
+
+                            {/* Navigation Buttons */}
+                            <div className="flex gap-4 z-10">
+                                <button
+                                    onClick={() => swiperRef.current?.slidePrev()}
+                                    className="w-14 h-14 rounded-full bg-white border border-black hover:border-primary hover:text-white text-black flex items-center justify-center hover:bg-primary transition-colors"
+                                >
+                                    <ArrowLeft className="w-6 h-6" />
+                                </button>
+                                <button
+                                    onClick={() => swiperRef.current?.slideNext()}
+                                    className="w-14 h-14 rounded-full bg-white border border-black hover:border-primary hover:text-white text-black flex items-center justify-center hover:bg-primary transition-colors"
+                                >
+                                    <ArrowRight className="w-6 h-6" />
+                                </button>
+                            </div>
                         </div>
+                    </div>
 
-                        <div className="text-6xl font-light md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:transform md:-translate-x-full md:pr-12">
-                            01 <span className="text-2xl text-gray-400">/09</span>
-                        </div>
-
-                        {/* Swiper Container */}
-                        {/* <div className="w-full md:pl-24">
-                            <Swiper
-                                modules={[Navigation, Autoplay]}
-                                spaceBetween={30}
-                                slidesPerView={1}
-                                breakpoints={{
-                                    640: { slidesPerView: 2 },
-                                    1024: { slidesPerView: 3 },
-                                }}
-                                onBeforeInit={(swiper) => {
-                                    swiperRef.current = swiper;
-                                }}
-                                className="w-full"
-                            >
-                                {slides.map((slide) => (
-                                    <SwiperSlide key={slide.id}>
-                                        <div className="relative h-80 rounded-xl overflow-hidden group cursor-pointer">
-                                            <div
-                                                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                                                style={{ backgroundImage: `url(${slide.image})` }}
-                                            ></div>
-                                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                                            <div className="absolute top-6 right-6">
-                                                <span className="bg-white text-black px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                                                    {slide.title.toUpperCase()}
-                                                </span>
-                                            </div>
+                    {/* Swiper Container */}
+                    <div className="w-full">
+                        <Swiper
+                            modules={[Navigation, Autoplay]}
+                            spaceBetween={30}
+                            slidesPerView={1}
+                            loop={true}
+                            breakpoints={{
+                                640: { slidesPerView: 2 },
+                                1024: { slidesPerView: 3 },
+                                1280: { slidesPerView: 4 },
+                            }}
+                            onBeforeInit={(swiper) => {
+                                swiperRef.current = swiper;
+                            }}
+                            className="w-full" // Added padding bottom for potential shadows/spacing
+                        >
+                            {features.map((feature, index) => (
+                                <SwiperSlide key={feature.id} className="h-full">
+                                    <motion.div
+                                        className="bg-gray-50 p-8 rounded-3xl h-[350px] flex flex-col justify-between group bg-primary hover:bg-primaryHover text-white transition-all duration-300 border border-gray-100"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    >
+                                        <div className="space-y-6">
+                                            <feature.icon className="w-12 h-12 text-white transition-colors" />
+                                            <h3 className= " text-xl md:text-2xl font-medium uppercase leading-snug">
+                                                {feature.title}
+                                            </h3>
                                         </div>
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
-                        </div> */}
+
+                                        <div className="space-y-6">
+                                            <p className="text-gray-100 text-base leading-relaxed">
+                                                {feature.description}
+                                            </p>
+                                            <div className="w-12 h-px bg-gray-100 transition-colors"></div>
+                                        </div>
+                                    </motion.div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                 </div>
 

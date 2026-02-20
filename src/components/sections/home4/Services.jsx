@@ -1,11 +1,12 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { OfficeRelocation, HomeRelocation, FurnitureInstallationImage, StorageImage, PackingImage } from '../../../assets';
+import { OfficeRelocation, HomeRelocation, FurnitureInstallationImage, LongTermStorageImage, ShortTermStorageImage, CommercialSpaceImage, PackingImage } from '../../../assets';
 
 const Services = () => {
     const swiperRef = useRef(null);
@@ -15,46 +16,59 @@ const Services = () => {
             id: 1,
             title: "Office Relocation",
             description: "Professional corporate moving services designed to minimize downtime and ensure a smooth transition for your business operations.",
-            image: OfficeRelocation
+            image: OfficeRelocation,
+            link: "/services/office-movers-in-abu-dhabi"
         },
         {
             id: 2,
             title: "House Relocation",
             description: "Seamless residential moving experiences ensuring your personal belongings and household items arrive safely at your new home.",
-            image: HomeRelocation
+            image: HomeRelocation,
+            link: "/services/house-movers-in-abu-dhabi"
         },
         {
             id: 3,
             title: "Furniture Installation & Handyman Services",
             description: "Expert disassembly, reassembly, and installation services for furniture, along with general handyman assistance for mounting and fixtures.",
-            image: FurnitureInstallationImage
+            image: FurnitureInstallationImage,
+            link: "/services/furniture-handyman"
         },
         {
             id: 4,
             title: "Corporate Services",
             description: "Comprehensive B2B solutions including employee relocation programs, asset management, and ongoing logistics support tailored for large organizations.",
-            image: PackingImage
-        },
-        {
-            id: 5,
-            title: "Short Term & Long Term Storage",
-            description: "Secure, climate-controlled warehouse facilities providing flexible storage solutions for the safekeeping of your valuables for any duration.",
-            image: StorageImage
+            image: PackingImage,
+            link: "/services/corporate-services"
         },
         {
             id: 6,
+            title: "Short-Term Storage",
+            description: "Secure short-term storage solutions in Abu Dhabi for temporary needs such as home renovations, short travel periods, or student storage, with flexible terms and easy access.",
+            image: ShortTermStorageImage,
+            link: "/services/short-term-storage-solutions-in-abu-dhabi"
+        },
+        {
+            id: 5,
+            title: "Long-Term Storage",
+            description: "Reliable long-term storage solutions in Abu Dhabi for household items, business inventory, and documents, featuring climate-controlled facilities and 24/7 security.",
+            image: LongTermStorageImage,
+            link: "/services/long-term-storage-solutions-in-abu-dhabi"
+        },
+        {
+            id: 7,
             title: "Commercial Space",
             description: "Specialized logistics for retail stores, showrooms, and industrial properties, handling inventory and heavy equipment with precision.",
-            image: PackingImage
+            image: CommercialSpaceImage,
+            link: "/services/commercial-space"
         }
     ]
 
     return (
-        <section className="bg-white py-24 font-poppins relative">
+        <section className="bg-white pt-16 md:pt-24 font-poppins relative">
             <div className="container mx-auto px-4 md:px-0 ">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-6xl font-medium uppercase leading-tight max-w-4xl mx-auto">
-                        Global Icon Packers & <br /> Movers provides
+                <div className="text-center mb-8 md:mb-16">
+                    <h2 className="text-3xl md:text-6xl font-medium uppercase leading-tight max-w-4xl mx-auto">
+                        Global Icon Packers & <br className='hidden md:block' /> Movers provides
                     </h2>
                 </div>
 
@@ -112,7 +126,7 @@ const Services = () => {
                     >
                         {services.map((service) => (
                             <SwiperSlide key={service.id} className="h-auto">
-                                <div className="relative group h-[600px] w-full overflow-hidden text-white rounded-2xl">
+                                <div className="relative group h-[500px] md:h-[600px] w-full overflow-hidden text-white rounded-2xl">
                                     {/* Background Image */}
                                     <div
                                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -124,7 +138,7 @@ const Services = () => {
 
                                     {/* Content */}
                                     <div className="absolute inset-0 p-8 flex flex-col justify-end pt-16">
-                                        <h3 className="text-3xl md:text-4xl font-normal uppercase leading-tight mb-2 tracking-wide transition-all duration-500 group-hover:-translate-y-2">
+                                        <h3 className="text-2xl md:text-4xl font-normal uppercase leading-tight mb-2 tracking-wide transition-all duration-500 group-hover:-translate-y-2">
                                             {service.title}
                                         </h3>
 
@@ -135,9 +149,9 @@ const Services = () => {
 
                                             {/* Buttons positioned at bottom */}
                                             <div className="w-fit gap-4 pt-8 pb-2">
-                                                <button className="w-full  rounded-full border border-white/50 text-black bg-white hover:bg-primary hover:border-primary hover:text-white transition-colors py-3 px-4 text-sm uppercase tracking-wider backdrop-blur-sm">
+                                                <Link to={service.link} className="block w-full text-center rounded-full border border-white/50 text-black bg-white hover:bg-primary hover:border-primary hover:text-white transition-colors py-3 px-4 text-sm uppercase tracking-wider backdrop-blur-sm">
                                                     Learn more
-                                                </button>
+                                                </Link>
 
                                             </div>
                                         </div>
