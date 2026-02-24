@@ -16,6 +16,8 @@ import LongTermStoragePage from "./pages/services/LongTermStorage.jsx"
 import CommercialSpacePage from "./pages/services/CommercialSpace.jsx"
 
 import ScrollToTop from "./components/ScrollToTop.jsx"
+import BlogPage from "./pages/BlogPage.jsx"
+import ErrorPage from "./pages/ErrorPage.jsx"
 
 function App() {
 
@@ -37,6 +39,8 @@ function App() {
           <Route path="/services/commercial-space" element={<CommercialSpacePage />} />
           <Route path="/services/furniture-handyman" element={<FurnitureHandymanPage />} />
           <Route path="/contact-us" element={<ContactPage />} />
+          <Route path="/blog/:slug" element={<BlogPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </div>
