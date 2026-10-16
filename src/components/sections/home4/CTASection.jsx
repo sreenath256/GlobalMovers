@@ -18,13 +18,13 @@ const CTASection = () => {
                     className="text-3xl md:text-6xl font-medium uppercase leading-tight mb-6"
                 >
                     Ready to Relocate? <br />
-                    Get Fast Movers & Secure Storage in Abu Dhabi Now!
                 </motion.h2>
                 <motion.p
                     {...fadeInUp}
                     className="text-base md:text-xl text-gray-300 mb-10 leading-relaxed "
                 >
-                    Move smarter with expert movers and packers in Abu Dhabi -- quick shifting, careful packing, and secure storage guaranteed.                </motion.p>
+                    Move smarter with experienced movers and packers in Abu Dhabi - fast shifting, careful packing, and secure storage solutions you can rely on.
+                </motion.p>
                 <HeroButton name=' Get A Quote' to='/contact-us' />
             </div>
         </section >

@@ -3,6 +3,7 @@ import { Image7 } from '../../../assets';
 import { Image10 } from '../../../assets';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const heroTexts = [
     { first: "Packed with Care" },
@@ -35,6 +36,7 @@ const StatItem = ({ value, suffix, label }) => {
 
 const Hero = () => {
     const [textIndex, setTextIndex] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -46,7 +48,7 @@ const Hero = () => {
     return (
         <div className="relative w-full min-h-screen bg-gradient-to-b from-gray-400 to-black overflow-hidden font-poppins text-white">
             {/* Background Image Placeholder */}
-            <div className={`absolute inset-0 bg-cover bg-top mix-blend-overlay opacity-50 `} style={{ backgroundImage: `url(${Image10})` }}></div>
+            <div className={`absolute inset-0 bg-cover bg-top mix-blend-overlay opacity-50 `} style={{ backgroundImage: `url(/hero-bg.webp)` }}></div>
 
             <div className="relative w-11/12 mx-auto pt-32 pb-20 min-h-screen lg:h-screen flex flex-col justify-between">
 
@@ -92,7 +94,7 @@ const Hero = () => {
                             Global Icon Movers stands as the best movers and packers in Abu Dhabi, offering relocation, packing, and storage services across the UAE since 2008 with 15+ years of proven expertise.
                         </p>
                         {/* Local to Global Card */}
-                        <div className="relative bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl w-fit p-3 px-4 md:px-8 flex items-center justify-center gap-2 group overflow-hidden hover:scale-110 transition-transform transform hover:cursor-pointer">
+                        <div onClick={() => navigate('/contact-us')} className="relative bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl w-fit p-3 px-4 md:px-8 flex items-center justify-center gap-2 group overflow-hidden hover:scale-110 transition-transform transform hover:cursor-pointer">
                             <h3 className="text-lg md:text-2xl font-medium uppercase leading-snug text-nowrap">
                                 Get a Quote
                             </h3>

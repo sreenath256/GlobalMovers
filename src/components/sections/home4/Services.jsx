@@ -31,7 +31,7 @@ const Services = () => {
             title: "Furniture Installation & Handyman Services",
             description: "Expert disassembly, reassembly, and installation services for furniture, along with general handyman assistance for mounting and fixtures.",
             image: FurnitureInstallationImage,
-            link: "/services/furniture-handyman"
+            link: "/services/handyman"
         },
         {
             id: 4,
@@ -67,9 +67,12 @@ const Services = () => {
         <section className="bg-white pt-16 md:pt-24 font-poppins relative">
             <div className="container mx-auto px-4 md:px-0 ">
                 <div className="text-center mb-8 md:mb-16">
-                    <h2 className="text-3xl md:text-6xl font-medium uppercase leading-tight max-w-4xl mx-auto">
-                        Global Icon Packers & <br className='hidden md:block' /> Movers provides
+                    <h2 className="text-3xl md:text-6xl font-medium uppercase leading-tight max-w-5xl mx-auto">
+                        Global Icon Movers & Packers <br className='hidden md:block' /> Packers provides
                     </h2>
+                    <p className="text-gray-600 md:max-w-5xl mx-auto text-base md:text-lg leading-relaxed mb-4 md:mb-8">
+                        We handle home, office, and commercial moves with complete, tailored solutions. As one of the best movers in Abu Dhabi, we also provide secure storage and setup services for a smooth, stress-free relocation.
+                    </p>
                 </div>
 
                 <div className='relative'>
@@ -146,13 +149,19 @@ const Services = () => {
                                             {service.description}
                                         </p>
                                         <div className="max-h-0 overflow-hidden opacity-0 group-hover:max-h-[300px] group-hover:opacity-100 transition-all duration-1000 ease-in-out">
-
-                                            {/* Buttons positioned at bottom */}
                                             <div className="w-fit gap-4 pt-8 pb-2">
-                                                <Link to={service.link} className="block w-full text-center rounded-full border border-white/50 text-black bg-white hover:bg-primary hover:border-primary hover:text-white transition-colors py-3 px-4 text-sm uppercase tracking-wider backdrop-blur-sm">
-                                                    Learn more
-                                                </Link>
+                                                <Link
+                                                    to={service.link}
+                                                    className="block w-full text-center rounded-full border border-white/50 text-black bg-white hover:bg-primary hover:border-primary hover:text-white transition-colors py-3 px-4 text-sm uppercase tracking-wider backdrop-blur-sm"
+                                                >
+                                                    <span className="sr-only">
+                                                        Learn more about our {service.title} services in Abu Dhabi
+                                                    </span>
 
+                                                    <span aria-hidden="true">
+                                                        Learn more
+                                                    </span>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

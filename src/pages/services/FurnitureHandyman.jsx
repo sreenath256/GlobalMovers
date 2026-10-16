@@ -6,6 +6,7 @@ import {
     ArrowRight
 } from 'lucide-react';
 import { FurnitureInstallation1, FurnitureInstallation2, FurnitureInstallation3 } from '../../assets';
+import FAQ from '../../components/sections/home4/Faq';
 
 const FurnitureHandymanPage = () => {
 
@@ -16,11 +17,35 @@ const FurnitureHandymanPage = () => {
         transition: { duration: 0.6 }
     };
 
+
+    const faqs = [
+        {
+            question: "How do I know if I need professional handyman services instead of doing it myself?",
+            answer: "If the task involves heavy furniture, wall drilling, electrical fixtures, precise alignment, or tools you don’t own, it’s safer to hire professional handyman services in Abu Dhabi. Improper installation can cause wall damage, safety risks, or furniture instability."
+        },
+        {
+            question: "Is it safe to hire a Handyman Services provider for heavy furniture installation?",
+            answer: "Yes, when you hire a professional Handyman Services provider in Abu Dhabi like Global Icon Movers. Our technicians use proper anchors, leveling tools, and safe lifting techniques to ensure wardrobes, wall units, and cabinets are securely installed."
+        },
+        {
+            question: "Will furniture installation damage my walls or tiles?",
+            answer: "No. Our Furniture Installation Service in Abu Dhabi is carried out carefully to avoid cracks, unnecessary drilling, or surface damage. We assess wall type (concrete, drywall, etc.) before installation to ensure proper support."
+        },
+        {
+            question: "How long does furniture installation usually take?",
+            answer: "The time depends on the size and complexity of the furniture. A simple bed or table may take under an hour, while wardrobes or modular units can take several hours. Our handyman services in Abu Dhabi are scheduled efficiently to minimize disruption."
+        },
+        {
+            question: "Is booking a handyman service in Abu Dhabi complicated?",
+            answer: "Not at all. You can contact us directly, share your requirements, and we’ll schedule a convenient time. Our process is simple, quick, and transparent."
+        },
+    ]
+
     return (
         <>
             <title>Furniture Installation & Handyman Services In Abu Dhabi</title>
             <meta name="description" content="Expert furniture installation and handyman services for homes & offices. Quick, affordable repairs, assembly, mounting & maintenance." />
-            <link rel="canonical" href="https://globaliconmovers.com/services/furniture-handyman" />
+            <link rel="canonical" href="https://globaliconmovers.com/services/handyman" />
 
 
             <div className="font-poppins bg-white">
@@ -63,10 +88,10 @@ const FurnitureHandymanPage = () => {
                             <h2 className="text-3xl md:text-6xl font-medium uppercase leading-tight text-gray-900 mb-6">
                                 Furniture Installation
                             </h2>
-                            <p className="text-gray-600 leading-relaxed mb-6 text-base md:text-xl ">
+                            <p className="text-gray-600 leading-relaxed mb-6 text-base md:text-lg ">
                                 Installation isn’t about just putting things in a room, there is more to it at Global Icon Movers and Packers. It’s about designing a place that is both practical while being beautiful. A space that is yours and one that fits your vision. We are located in the heart of Abu Dhabi, and we’ve become the international premium destination. For professional furniture installation service in Abu Dhabi that stand out from the basics.
                             </p>
-                            <p className="text-gray-600 leading-relaxed text-base md:text-xl">
+                            <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                                 As we recognize every piece of furniture has a story and should be handled with care. At Furniture Installation Service in Abu Dhabi our specialized service is to provide the space you dreamed of. From furnishing a new home to updating an office, or redesigning a commercial space. Our team draws upon unparalleled expertise, attention to detail and results on every project.
                             </p>
                         </motion.div>
@@ -110,14 +135,22 @@ const FurnitureHandymanPage = () => {
                             <h2 className="text-3xl md:text-6xl font-medium uppercase leading-tight text-gray-900 mb-6">
                                 Handyman Services
                             </h2>
-                            <p className="text-gray-600 leading-relaxed mb-6 text-base md:text-xl">
+                            <p className="text-gray-600 leading-relaxed mb-6 text-base md:text-lg">
                                 As a reliable Handyman Services provider in UAE, Global Icon Movers specializes in providing our customers with the best Handyman Services in Abu Dhabi. On depending on the changing dynamics of the emirate, our team of highly skilled handymen are what has been considered in some circles. When it comes to servicing homes and offices within professional reach and to the best of their abilities.
                             </p>
-                            <p className="text-gray-600 leading-relaxed text-base md:text-xl">
+                            <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                                 For years we’ve worked with the Abu Dhabi community and know that with modern living. Which come versatile and efficient maintenance demands. Our handymen are not just workers, they are trained professionals. Where all can handle a sophisticated list of home and office repair and installation tasks. Whatever size project you have with regard to the smallest home repair to the most complex installation projects is. Our team is ready to provide exceptional service at unparalleled professionalism.
                             </p>
                         </motion.div>
                     </div>
+                </section>
+
+                <section className='w-11/12  mx-auto '>
+                    <FAQ
+                        title="Have Questions? We’re Here to Help"
+                        description="Got a repair or installation that needs attention? Our handyman services in Abu Dhabi provide quick, reliable help for homes and offices. From furniture assembly to small repairs, our skilled team makes everyday maintenance simple and hassle-free"
+                        faqs={faqs}
+                    />
                 </section>
 
                 {/* CTA Section */}
@@ -131,7 +164,7 @@ const FurnitureHandymanPage = () => {
                         </motion.h2>
                         <motion.p
                             {...fadeInUp}
-                            className="text-base md:text-xl text-gray-300 mb-10 leading-relaxed"
+                            className="text-base md:text-lg text-gray-300 mb-10 leading-relaxed"
                         >
                             Contact Global Icon Movers today for expert furniture installation and reliable handyman services in Abu Dhabi.
                         </motion.p>

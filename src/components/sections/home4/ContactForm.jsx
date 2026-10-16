@@ -4,14 +4,14 @@ import 'react-phone-input-2/lib/style.css';
 import emailjs from '@emailjs/browser';
 
 const ContactForm = ({ title = "Contact Us", desc = "Looking for professional storage and moving services. Let Global Icon Movers handle everything so you can focus on what matters. Reach out today for a free quote." }) => {
-    
+
     // 1. Setup Form State
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
         service: ''
     });
-    
+
     // 2. Setup States for Status and Errors
     const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
     const [errors, setErrors] = useState({}); // Tracks validation errors
@@ -20,7 +20,7 @@ const ContactForm = ({ title = "Contact Us", desc = "Looking for professional st
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
-        
+
         // Clear the error for this field once the user starts typing
         if (errors[name]) {
             setErrors(prev => ({ ...prev, [name]: '' }));
@@ -30,7 +30,7 @@ const ContactForm = ({ title = "Contact Us", desc = "Looking for professional st
     // 4. Handle PhoneInput specifically and clear error on change
     const handlePhoneChange = (value) => {
         setFormData(prev => ({ ...prev, phone: value }));
-        
+
         if (errors.phone) {
             setErrors(prev => ({ ...prev, phone: '' }));
         }
@@ -39,32 +39,60 @@ const ContactForm = ({ title = "Contact Us", desc = "Looking for professional st
     // 5. Handle Form Submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        // --- Custom Validation Logic ---
-        const newErrors = {};
-        if (!formData.name.trim()) newErrors.name = "Name is required.";
-        if (!formData.phone) newErrors.phone = "Mobile number is required.";
-        if (!formData.service) newErrors.service = "Please select a service.";
 
-        // If there are errors, set them in state and stop submission
+        const newErrors = {};
+
+        // --- 1. Name Validation ---
+        // Checks if empty, and ensures it only contains letters and spaces (2-50 chars)
+        const nameRegex = /^[A-Za-z\s]{2,50}$/;
+        if (!formData.name || !formData.name.trim()) {
+            newErrors.name = "Name is required.";
+        } else if (!nameRegex.test(formData.name.trim())) {
+            newErrors.name = "Please enter a valid name (letters only).";
+        }
+
+        // --- 2. Phone Validation (International) ---
+        // Allows an optional '+' at the start, followed by 7 to 15 digits
+        const phoneRegex = /^\+?[0-9]{9,15}$/;
+
+        // Strip out spaces or dashes the user might type before testing
+        const cleanedPhone = String(formData.phone).replace(/[\s-]/g, '');
+        if (!cleanedPhone) {
+            newErrors.phone = "Mobile number is required.";
+        } else if (!phoneRegex.test(cleanedPhone)) {
+            newErrors.phone = "Please enter a valid mobile number (e.g., +971501234567).";
+        }
+
+
+        // --- 3. Service Validation ---
+        if (!formData.service || !formData.service.trim()) {
+            newErrors.service = "Please select a service.";
+        }
+
+        // --- Error Handling ---
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
+            setStatus('idle'); // Optional: reset status if it was previously set
             return;
         }
 
+        // Clear any previous errors to ensure a clean state
+        setErrors({});
         setStatus('loading');
 
+        // Note: Consider moving these to an .env file for better security
+        // e.g., process.env.REACT_APP_EMAILJS_SERVICE_ID
         const serviceId = 'service_nbwtyxp';
         const templateId = 'template_fd3fovh';
         const publicKey = '8E1G2P4qNW91FN3Vb';
 
+        // REMOVED the stray 'return' that was blocking execution here
         emailjs.send(serviceId, templateId, formData, publicKey)
             .then((response) => {
-                console.log('SUCCESS!', response.status, response.text);
                 setStatus('success');
                 // Reset form
                 setFormData({ name: '', phone: '', service: '' });
-                
+
                 // Reset success message after 3 seconds
                 setTimeout(() => setStatus('idle'), 3000);
             })
@@ -94,9 +122,8 @@ const ContactForm = ({ title = "Contact Us", desc = "Looking for professional st
                             value={formData.name}
                             onChange={handleChange}
                             placeholder="Name"
-                            className={`w-full bg-gray-100 border rounded-lg px-4 py-3 text-base outline-none transition-colors ${
-                                errors.name ? 'border-red-500 focus:ring-1 focus:ring-red-500' : 'border-transparent focus:ring-2 focus:ring-gray-300'
-                            }`}
+                            className={`w-full bg-gray-100 border rounded-lg px-4 py-3 text-base outline-none transition-colors ${errors.name ? 'border-red-500 focus:ring-1 focus:ring-red-500' : 'border-transparent focus:ring-2 focus:ring-gray-300'
+                                }`}
                         />
                         {errors.name && <p className="text-red-500 text-xs mt-1 ml-1">{errors.name}</p>}
                     </div>
@@ -143,9 +170,8 @@ const ContactForm = ({ title = "Contact Us", desc = "Looking for professional st
                                 name="service"
                                 value={formData.service}
                                 onChange={handleChange}
-                                className={`w-full bg-gray-100 border rounded-lg px-4 py-3 text-base outline-none appearance-none text-gray-500 transition-colors ${
-                                    errors.service ? 'border-red-500 focus:ring-1 focus:ring-red-500' : 'border-transparent focus:ring-2 focus:ring-gray-300'
-                                }`}
+                                className={`w-full bg-gray-100 border rounded-lg px-4 py-3 text-base outline-none appearance-none text-gray-500 transition-colors ${errors.service ? 'border-red-500 focus:ring-1 focus:ring-red-500' : 'border-transparent focus:ring-2 focus:ring-gray-300'
+                                    }`}
                             >
                                 <option value="" disabled>Select Service</option>
                                 <option value="moving">Moving</option>
@@ -161,14 +187,14 @@ const ContactForm = ({ title = "Contact Us", desc = "Looking for professional st
                         {errors.service && <p className="text-red-500 text-xs mt-1 ml-1">{errors.service}</p>}
                     </div>
 
-                    <button 
-                        type="submit" 
+                    <button
+                        type="submit"
                         disabled={status === 'loading'}
                         className="w-full bg-primary hover:bg-primaryHover text-white font-medium py-3 rounded-lg uppercase tracking-wide transition-colors mt-2 disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                         {status === 'loading' ? 'Sending...' : 'Submit Request'}
                     </button>
-                    
+
                     {/* Feedback Messages */}
                     {status === 'success' && (
                         <p className="text-green-600 text-sm text-center mt-2 font-medium">Request sent successfully!</p>

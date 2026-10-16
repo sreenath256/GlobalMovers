@@ -58,9 +58,12 @@ const AboutUs = () => {
     return (
         <section className="bg-white text-black pt-16 md:pt-24 font-poppins overflow-hidden w-11/12 mx-auto">
             <div className="w-full">
-                <h2 className="text-3xl md:text-6xl text-center font-medium uppercase leading-tight max-w-4xl mx-auto md:mb-16">
+                <h2 className="text-3xl md:text-6xl text-center font-medium uppercase leading-tight max-w-4xl mx-auto md:mb-6">
                     SMART MOVING & SECURE STORAGE SOLUTIONS
                 </h2>
+                <p className="text-gray-600 md:max-w-5xl mx-auto text-base text-center md:text-lg leading-relaxed">
+                    Smart relocations need the right team and storage support. As one of the best movers in Abu Dhabi, we combine expert packing, careful handling, and secure storage to keep your belongings safe at every stage.
+                </p>
 
                 {/* Bottom Slider Section */}
                 <div className="relative mt-8">
@@ -69,10 +72,7 @@ const AboutUs = () => {
                         {/* Wrapper for controls to position them nicely */}
                         <div className="w-full flex justify-between items-center px-2">
 
-                            {/* Counter or Title (Optional, keeping it clean or adding if needed) */}
-                            {/* For now, just utilizing the space or we can center the buttons if desired. 
-                                 Based on previous code, there was a counter. I'll keep the buttons and maybe align them.
-                             */}
+
                             <div className='block'></div>
 
                             {/* Navigation Buttons */}
@@ -80,12 +80,13 @@ const AboutUs = () => {
                                 <button
                                     onClick={() => swiperRef.current?.slidePrev()}
                                     className="w-14 h-14 rounded-full bg-white border border-black hover:border-primary hover:text-white text-black flex items-center justify-center hover:bg-primary transition-colors"
-                                >
+                                    aria-label="Previous slide">
                                     <ArrowLeft className="w-6 h-6" />
                                 </button>
                                 <button
                                     onClick={() => swiperRef.current?.slideNext()}
                                     className="w-14 h-14 rounded-full bg-white border border-black hover:border-primary hover:text-white text-black flex items-center justify-center hover:bg-primary transition-colors"
+                                    aria-label="Next slide"
                                 >
                                     <ArrowRight className="w-6 h-6" />
                                 </button>
@@ -121,7 +122,7 @@ const AboutUs = () => {
                                     >
                                         <div className="space-y-6">
                                             <feature.icon className="w-12 h-12 text-white transition-colors" />
-                                            <h3 className= " text-xl md:text-2xl font-medium uppercase leading-snug">
+                                            <h3 className=" text-xl md:text-2xl font-medium uppercase leading-snug">
                                                 {feature.title}
                                             </h3>
                                         </div>

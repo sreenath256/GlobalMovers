@@ -3,33 +3,69 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/logoIcon.jpg" />
+  <link rel="icon" type="image/jpeg" href="/logoIcon.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- <title>tripscribe</title>
-  <meta property="og:title" content="Best Travel Agency in Kerala | Tours and Travels in Kerala | TripScribe" />
-  <meta property="og:description" content="Looking for the Best Travel Agency in Kerala?..." />
+  <meta property="og:title" content="Best Movers and Packers in Abu Dhabi | Movers in Abu Dhabi" />
+  <meta property="og:site_name" content="Global Icon Movers" />
+  <meta property="og:description" content="Plan your move to any part with Global Icon..." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.tripscribe.in" />
-  <meta property="og:image" content="https://www.tripscribe.in/images/tripscribe-logo-blue.png" />
+  <meta property="og:url" content="https://globaliconmovers.com" />
+  <meta property="og:image" content="https://globaliconmovers.com/logo.webp" />
   <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" /> -->
+  <meta property="og:image:height" content="630" />
 
-  <link href="
-https://cdn.jsdelivr.net/npm/sf-font@1.0.0/stylesheet.min.css
-" rel="stylesheet">
+  <!-- Preconnect to the backend production API to eliminate the 340ms LCP connection delay -->
+  <link rel="preconnect" href="https://global-movers-backend-production.up.railway.app" crossorigin>
 
-  <!-- Google Fonts -->
+  <!-- Force font-display: swap behavior for CDN-hosted SF Pro Display font -->
+  <script>
+    if ('fonts' in document) {
+      const font = new FontFace('SF Pro Display', 'url(https://cdn.jsdelivr.net/npm/sf-font@1.0.0/SFProDisplay-Regular.woff2)', {
+        display: 'swap'
+      });
+      font.load().then(function(loadedFont) {
+        document.fonts.add(loadedFont);
+      }).catch(function(e) {
+        // Fallback silently
+      });
+    }
+  </script>
+
+  <!-- Preload the main hero image to fix the 9.5s LCP issue -->
+  <link rel="preload" fetchpriority="high" as="image" href="/hero-bg.webp" type="image/webp" />
+
+  <!-- Asynchronously load SF Font Stylesheet -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/sf-font@1.0.0/stylesheet.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sf-font@1.0.0/stylesheet.min.css">
+  </noscript>
+
+  <!-- Google Fonts Preconnect and Non-Blocking Load Setup -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </noscript>
+  
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W7LJX9QS');</script>
+  <meta name="google-site-verification" content="Hm5KWrkOq1HvjNJMsjD-kjkZlBYcO1mJI4YuL06NXro" />
 </head>
+
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7LJX9QS" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 
 </html>

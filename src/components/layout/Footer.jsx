@@ -1,5 +1,4 @@
 import { Facebook, Twitter, Linkedin, Instagram, ArrowRight, Youtube, MapPin, Phone, Smartphone, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { GlobalLogo } from '../../assets';
 import { FaXTwitter } from 'react-icons/fa6';
 
@@ -14,19 +13,19 @@ const Footer = () => {
 
                     <div>
                         <img src={GlobalLogo} alt="Global Movers Logo" className="h-16 md:h-20 w-auto" />
-                        <p className="text-gray-700 text-sm">Global Icon Packers & Movers is one of UAE’s premier relocation and storage service providers. In 2008 Global Icon Packers & Movers was established with the vision of delivering high-standard relocation and storage services throughout United Arab Emirates.</p>
+                        <p className="text-gray-700 text-sm">Global Icon Movers & Packers is one of UAE’s premier relocation and storage service providers. In 2008 Global Icon Movers & Packers was established with the vision of delivering high-standard relocation and storage services throughout United Arab Emirates.</p>
                     </div>
 
                     {/* Menu Column */}
                     <div className="flex flex-col gap-4 md:gap-8">
                         <h3 className="text-xl font-normal uppercase">Menu</h3>
                         <ul className="space-y-3 text-base text-gray-700">
-                            <li><Link to="/" className="hover:text-black transition-colors">Home</Link></li>
-                            <li><Link to="/storage-solutions-in-abu-dhabi" className="hover:text-black transition-colors">About Us</Link></li>
-                            <li><Link to="/services" className="hover:text-black transition-colors">Our Services</Link></li>
-                            <li><Link to="/gallery" className="hover:text-black transition-colors">Gallery</Link></li>
-                            <li><Link to="/blog" className="hover:text-black transition-colors">Blog</Link></li>
-                            <li><Link to="/contact-us" className="hover:text-black transition-colors">Contact Us</Link></li>
+                            <li><a href="/" className="hover:text-black transition-colors">Home</a></li>
+                            <li><a href="/about" className="hover:text-black transition-colors">About Us</a></li>
+                            <li><a href="/services" className="hover:text-black transition-colors">Our Services</a></li>
+                            <li><a href="/gallery" className="hover:text-black transition-colors">Gallery</a></li>
+                            <li><a href="/blog" className="hover:text-black transition-colors">Blog</a></li>
+                            <li><a href="/contact-us" className="hover:text-black transition-colors">Contact Us</a></li>
                         </ul>
                     </div>
 
@@ -81,12 +80,12 @@ const Footer = () => {
                     </p>
 
                     <div className="flex items-center gap-6 mt-6 md:mt-0">
-                        <a href="https://www.facebook.com/globaliconmoversabudhabi/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Facebook className="w-6 h-6 fill-black" strokeWidth={0} /></a>
-                        <a href="https://x.com/movers_icon" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><FaXTwitter className="w-6 h-6 fill-black" strokeWidth={0} /></a>
-                        <a href="https://www.linkedin.com/company/global-icon-movers/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Linkedin className="w-6 h-6 fill-black" strokeWidth={0} /></a>
-                        <a href="https://www.youtube.com/@globaliconmovers9079" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Youtube className="w-6 h-6" /></a>
-                        <a href="https://www.instagram.com/globaliconmovers/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Instagram className="w-6 h-6" /></a>
-                        <a href="https://maps.app.goo.gl/mwpFqwmjq8MDYqR59" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><MapPin className="w-6 h-6" /></a>
+                        <a href="https://www.facebook.com/globaliconmoversabudhabi/" aria-label="Visit our Facebook page" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Facebook className="w-6 h-6 fill-black" strokeWidth={0} /></a>
+                        <a href="https://x.com/movers_icon" aria-label="Visit our X page" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><FaXTwitter className="w-6 h-6 fill-black" strokeWidth={0} /></a>
+                        <a href="https://www.linkedin.com/company/global-icon-movers/" aria-label="Visit our LinkedIn page" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Linkedin className="w-6 h-6 fill-black" strokeWidth={0} /></a>
+                        <a href="https://www.youtube.com/@globaliconmovers9079" aria-label="Visit our Youtube page" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Youtube className="w-6 h-6" /></a>
+                        <a href="https://www.instagram.com/globaliconmovers/" aria-label="Visit our Instagram page" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><Instagram className="w-6 h-6" /></a>
+                        <a href="https://maps.app.goo.gl/mwpFqwmjq8MDYqR59" aria-label="Visit our Google Maps page" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff2d0d] transition-colors"><MapPin className="w-6 h-6" /></a>
                     </div>
                 </div>
 

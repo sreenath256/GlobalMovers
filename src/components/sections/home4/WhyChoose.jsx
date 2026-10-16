@@ -37,13 +37,16 @@ const WhyChoose = () => {
                 <div className="flex flex-col lg:flex-row gap-16 items-center">
 
                     {/* Left Column: Content & Steps */}
-                    <div className="w-full lg:w-1/2 flex flex-col gap-10">
+                    <div className="w-full lg:w-1/2 flex flex-col gap-5">
                         <h1
-                            className="text-3xl md:text-6xl font-medium uppercase leading-tight max-w-4xl text-center mx-auto"
+                            className="text-3xl md:text-6xl font-medium uppercase leading-tight max-w-4xl text-center md:text-left mx-auto"
                         >
-                            Simplify Your Move with
-                            <span className="text-primary pl-2">Global Icon</span>
+                            Move with the Best
+                            <span className="text-primary "> Movers and Packers in Abu Dhabi</span>
                         </h1>
+                        <p className="text-gray-600 md:max-w-5xl mx-auto text-base md:text-lg leading-relaxed ">
+                            Moving doesn’t have to be stressful. With the Best Movers and packers in Abu Dhabi, we ensure careful planning, safe handling, and smooth coordination from start to finish - whether it’s a home or office relocation.
+                        </p>
 
                         <div className="flex flex-col md:gap-2">
                             {steps.map((step, index) => (
@@ -56,13 +59,13 @@ const WhyChoose = () => {
                                     viewport={{ once: true }}
                                     // Optional: Added duration for a smoother slide-up effect
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    className="flex gap-6 p-2 md:p-4 rounded-xl hover:bg-gray-50 transition-colors duration-300 group cursor-pointer border border-transparent hover:border-gray-100"
+                                    className="flex gap-6 p-2 rounded-xl hover:bg-gray-50 transition-colors duration-300 group cursor-pointer border border-transparent hover:border-gray-100"
                                 >
                                     <div className="shrink-0 md:w-12 w-10 md:h-12 h-10 rounded-full bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition-transform duration-300">
                                         {step.icon}
                                     </div>
                                     <div className="flex flex-col gap-1">
-                                        <h3 className="text-xl md:text-2xl font-semibold text-black group-hover:text-primary transition-colors">{step.title}</h3>
+                                        <p className="text-xl md:text-2xl font-semibold text-black group-hover:text-primary transition-colors">{step.title}</p>
                                         <p className="text-base text-gray-600 leading-relaxed max-w-lg">
                                             {step.description}
                                         </p>

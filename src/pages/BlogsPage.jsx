@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Image12 } from '../assets';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { URL } from '../common/api';
 
 const BlogSkeleton = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -25,34 +25,55 @@ const BlogSkeleton = () => (
 );
 
 const BlogList = () => {
-    const [posts, setPosts] = useState([]);
+    // We now store ALL posts here, and derive the current page's posts below
+    const [allPosts, setAllPosts] = useState([]); 
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
     const postsPerPage = 15;
 
     useEffect(() => {
-        const fetchPosts = async () => {
+        const fetchAllPosts = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch(`https://lemonchiffon-whale-379446.hostingersite.com/wp-json/wp/v2/pages?author=4&_embed&per_page=${postsPerPage}&page=${currentPage}`);
+                // // 1. FETCH WORDPRESS POSTS (Fetching a large batch to merge)
+                // const wpResponse = await fetch(`https://lemonchiffon-whale-379446.hostingersite.com/wp-json/wp/v2/pages?author=4&_embed&per_page=100`);
+                // if (!wpResponse.ok) throw new Error('Failed to fetch WordPress blogs');
+                // const wpData = await wpResponse.json();
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch blogs');
-                }
+                // 2. FETCH CUSTOM CMS POSTS
+                // ⚠️ REPLACE THIS URL WITH YOUR ACTUAL NODE.JS BACKEND DOMAIN 
+                const cmsResponse = await fetch(`${URL}/public/blogs`); 
+                if (!cmsResponse.ok) throw new Error('Failed to fetch CMS blogs');
+                const cmsData = await cmsResponse.json();
 
-                // Get total pages from WP headers
-                const totalPagesHeader = response.headers.get('X-WP-TotalPages');
-                if (totalPagesHeader) {
-                    setTotalPages(parseInt(totalPagesHeader, 10));
-                }
+                // 3. NORMALIZE WORDPRESS DATA
+                // const normalizedWp = wpData.map(post => ({
+                //     id: `wp-${post.id}`,
+                //     title: post.title.rendered,
+                //     excerpt: post.excerpt.rendered,
+                //     slug: post.slug,
+                //     date: new Date(post.date).getTime(), // Convert to timestamp for sorting
+                //     image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null,
+                //     source: 'wordpress'
+                // }));
 
-                const data = await response.json();
-                setPosts(data);
+                // 4. NORMALIZE CMS DATA
+                // ⚠️ UPDATE THESE FIELDS to match your exact MongoDB schema
+                const normalizedCms = (cmsData.blogs || []).map(blog => ({
+                    id: `cms-${blog._id}`,
+                    title: blog.title, 
+                    excerpt: blog.description || 'Read more about this topic...', // Add your excerpt field
+                    slug: blog.slug || blog._id, // Add your slug field
+                    date: new Date(blog.createdAt).getTime(),
+                    image: blog.primaryImage|| null, // Add your image field
+                    source: 'cms'
+                }));
 
-                // Scroll to top of the content section when page changes
-                window.scrollTo({ top: 400, behavior: 'smooth' });
+                // 5. COMBINE AND SORT BY DATE (Newest first)
+                const combinedPosts = [...normalizedCms].sort((a, b) => b.date - a.date);
+                
+                setAllPosts(combinedPosts);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -60,12 +81,21 @@ const BlogList = () => {
             }
         };
 
-        fetchPosts();
-    }, [currentPage]);
+        // Only run this fetch ONCE when the component mounts
+        fetchAllPosts();
+    }, []);
+
+    // --- CLIENT-SIDE PAGINATION LOGIC ---
+    const totalPages = Math.ceil(allPosts.length / postsPerPage);
+    const startIndex = (currentPage - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+    const currentPosts = allPosts.slice(startIndex, endIndex);
 
     const handlePageChange = (newPage) => {
         if (newPage >= 1 && newPage <= totalPages) {
             setCurrentPage(newPage);
+            // Scroll to top of the content section when page changes
+            window.scrollTo({ top: 400, behavior: 'smooth' });
         }
     };
 
@@ -87,7 +117,7 @@ const BlogList = () => {
         );
     }
 
-    if (posts.length === 0) {
+    if (allPosts.length === 0) {
         return (
             <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-100 inline-block">
                 <h2 className="text-2xl text-gray-400 font-medium uppercase tracking-widest">No blogs found</h2>
@@ -99,47 +129,48 @@ const BlogList = () => {
     return (
         <div className="flex flex-col gap-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                {posts.map((post) => {
-                    const featuredImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+                {currentPosts.map((post) => (
+                    <motion.div
+                        key={post.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full hover:shadow-md transition-shadow relative"
+                    >
+                        {/* Optional: Add a small badge to see which source the blog came from */}
+                        {/* <span className="absolute top-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded z-10">{post.source}</span> */}
 
-                    return (
-                        <motion.div
-                            key={post.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5 }}
-                            className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full hover:shadow-md transition-shadow"
-                        >
-                            {featuredImage && (
-                                <div className="h-56 overflow-hidden">
-                                    <img
-                                        src={featuredImage}
-                                        alt={post.title.rendered}
-                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                                    />
-                                </div>
-                            )}
-                            <div className="p-6 flex flex-col flex-grow">
-                                <h3
-                                    className="text-xl font-bold text-gray-900 mb-3 line-clamp-2"
-                                    dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                        {post.image && (
+                            <div className="h-56 overflow-hidden">
+                                <img
+                                    src={post.image}
+                                    alt="Blog Feature"
+                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                 />
-                                <div
-                                    className="text-gray-600 text-sm mb-6 flex-grow line-clamp-3"
-                                    dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-                                />
-                                <Link
-                                    to={`/blog/${post.slug}`}
-                                    className="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all"
-                                >
-                                    Read More
-                                    <span className="ml-2">→</span>
-                                </Link>
                             </div>
-                        </motion.div>
-                    );
-                })}
+                        )}
+                        <div className="p-6 flex flex-col flex-grow">
+                            <h3
+                                className="text-xl font-bold text-gray-900 mb-3 line-clamp-2"
+                                dangerouslySetInnerHTML={{ __html: post.title }}
+                            />
+                            <div
+                                className="text-gray-600 text-sm mb-6 flex-grow line-clamp-3"
+                                dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                            />
+                            <Link
+                                // Passing the source in the state so the inner page knows which API to call
+                                to={`/blog/${post.slug}`}
+                                state={{ source: post.source }}
+                                className="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all mt-auto"
+                            >
+                                Read More
+                                <span className="ml-2">→</span>
+                            </Link>
+                        </div>
+                    </motion.div>
+                ))}
             </div>
 
             {/* Pagination UI */}
@@ -190,12 +221,14 @@ const BlogList = () => {
     );
 };
 
+// ... Your BlogsPage component remains exactly the same below here
+
 const BlogsPage = () => {
     return (
         <>
             <title>Global Icon Movers Blog: Moving Tips, Insights, News</title>
             <meta name="description" content="Discover top moving blogs, industry insights, and helpful tips from Global Icon Movers. Learn how to make your next move smooth." />
-            <link rel="canonical" href="https://globaliconmovers./blog" />
+            <link rel="canonical" href="https://globaliconmovers.com/blog" />
 
             <div className="font-poppins bg-white flex flex-col min-h-screen">
 

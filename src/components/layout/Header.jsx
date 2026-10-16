@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { GlobalLogo } from '../../assets';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation, NavLink, Link } from 'react-router-dom';
 import { Phone, Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -16,14 +16,14 @@ const Header = () => {
 
     const navLinks = [
         { path: '/', label: 'Home' },
-        { path: '/storage-solutions-in-abu-dhabi', label: 'About' },
+        { path: '/about', label: 'About' },
         {
             path: '/services',
             label: 'Services',
             subLinks: [
                 { path: '/services/office-movers-in-abu-dhabi', label: 'Office Relocation' },
                 { path: '/services/house-movers-in-abu-dhabi', label: 'House Relocation' },
-                { path: '/services/furniture-handyman', label: 'Furniture & Handyman' },
+                { path: '/services/handyman', label: 'Furniture & Handyman' },
                 { path: '/services/corporate-services', label: 'Corporate Services' },
                 { path: '/services/short-term-storage-solutions-in-abu-dhabi', label: 'Short Term Storage' },
                 { path: '/services/long-term-storage-solutions-in-abu-dhabi', label: 'Long Term Storage' },
@@ -38,9 +38,9 @@ const Header = () => {
     return (
         <header className={`absolute top-0 left-0 right-0 z-50 w-11/12 mx-auto ${bgClass} backdrop-blur-lg border border-white/20 mt-6 rounded-full px-6 transition-colors duration-300`}>
             <div className="flex items-center justify-between py-2 lg:py-0">
-                <div>
+                <Link to="/">
                     <img className='w-32 lg:w-44' src={GlobalLogo} alt="Global Movers Logo" />
-                </div>
+                </Link>
 
                 {/* Desktop Navigation */}
                 <div className='hidden lg:block'>
@@ -94,7 +94,7 @@ const Header = () => {
 
                 {/* Mobile Menu Button */}
                 <div className="lg:hidden">
-                    <button onClick={toggleMenu} className="text-black focus:outline-none">
+                    <button onClick={toggleMenu} className="text-black focus:outline-none" aria-label="Open main menu">
                         {isMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
                     </button>
                 </div>

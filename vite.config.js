@@ -1,25 +1,30 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import Sitemap from 'vite-plugin-sitemap'
+import path from 'path'
+import { URL } from './src/common/api'
+
 
 // https://vite.dev/config/
 export default defineConfig(async () => {
+  let cmsBlogRoutes = [];
 
-  let blogRoutes = [];
-
+  // Fetch blogs from your Custom CMS
   try {
-    // Fetch up to 100 pages from your "blog user" (Author ID 2)
-    const response = await fetch('https://lemonchiffon-whale-379446.hostingersite.com/wp-json/wp/v2/pages?author=4&per_page=100');
-    const pages = await response.json();
+    const cmsResponse = await fetch(`${URL}/public/blogs`);
+    const cmsData = await cmsResponse.json();
 
-    // Map the WordPress slugs into your React routing format
-    blogRoutes = pages.map(page => `/blog/${page.slug}`);
+    if (cmsData && cmsData.blogs) {
+      cmsBlogRoutes = cmsData.blogs.map(blog => `/blog/${blog.slug}`);
+    }
   } catch (error) {
-    console.error('Failed to fetch blogs for sitemap:', error);
+    console.error('Failed to fetch CMS blogs for sitemap:', error);
   }
 
+  // Combine static routes with dynamic routes
   const allRoutes = [
     '/',
+    '/about',
     '/storage-solutions-in-abu-dhabi',
     '/services',
     '/gallery',
@@ -30,9 +35,10 @@ export default defineConfig(async () => {
     '/services/short-term-storage-solutions-in-abu-dhabi',
     '/services/long-term-storage-solutions-in-abu-dhabi',
     '/services/commercial-space',
-    '/services/furniture-handyman',
+    '/services/handyman',
     '/contact-us',
-    ...blogRoutes // The "spread" operator adds all fetched routes to this list
+    '/moving-packing-and-storage-in-abu-dhabi',
+    ...cmsBlogRoutes  // Spreads CMS routes
   ];
 
   return {
@@ -43,7 +49,18 @@ export default defineConfig(async () => {
         dynamicRoutes: allRoutes
       })
     ],
+    build: {
+      sourcemap: true,
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+        '@common': path.resolve(__dirname, './src/common'),
+        '@components': path.resolve(__dirname, './src/components'),
+        '@utils': path.resolve(__dirname, './src/utils'),
+        '@assets': path.resolve(__dirname, './src/assets'),
+      },
+    },
+
   }
 })
-
-

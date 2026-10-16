@@ -46,7 +46,7 @@ const Testimonials = () => {
         <section className=" font-poppins text-black w-11/12 mx-auto pt-16 md:pt-24 rounded-3xl overflow-hidden">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-16 gap-4 md:gap-8">
                 <div className=''>
-                    <h2 className="text-3xl md:text-6xl text-center font-medium uppercase leading-tight ">
+                    <h2 className="text-3xl md:text-6xl text-center md:text-left font-medium uppercase leading-tight ">
                         What Our Customers Are <br className='hidden md:block' /> Saying About Our Services?
                     </h2>
                 </div>
@@ -55,12 +55,14 @@ const Testimonials = () => {
                     <button
                         onClick={() => swiperRef.current?.slidePrev()}
                         className="w-14 h-14 rounded-full bg-white border border-black hover:border-primary hover:text-white text-black flex items-center justify-center hover:bg-primary transition-colors"
-                    >
+                        aria-label="Previous slide"
+                   >
                         <ArrowLeft className="w-6 h-6" />
                     </button>
                     <button
                         onClick={() => swiperRef.current?.slideNext()}
                         className="w-14 h-14 rounded-full bg-white border border-black hover:border-primary hover:text-white text-black flex items-center justify-center hover:bg-primary transition-colors"
+                        aria-label="Next slide"
                     >
                         <ArrowRight className="w-6 h-6" />
                     </button>

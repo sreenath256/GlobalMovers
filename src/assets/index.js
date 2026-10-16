@@ -10,10 +10,11 @@ import Image7 from './images/image7.webp'
 import BackQuotes from './elements/backquotes.svg'
 import Image8 from './images/image8.webp'
 import Image9 from './images/image9.webp'
-import Image10 from './images/image10.png'
+import Image10 from './images/image10.webp'
 import Image11 from './images/image11.webp'
 import Image12 from './images/image12.webp'
 import Image13 from './images/image13.webp'
+import Image14 from './images/image14.jpg'
 import ShortermStorageImage from './images/services/storage.webp'
 // import PackingImage from './images/services/package-materials.webp'
 import HandymanImage from './images/services/handyman.webp'
@@ -95,6 +96,7 @@ export {
     Image11,
     Image12,
     Image13,
+    Image14,
     Client1,
     Client2,
     Client3,

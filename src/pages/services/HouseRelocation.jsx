@@ -237,7 +237,7 @@ const HouseRelocationPage = () => {
                         </motion.h2>
                         <motion.p
                             {...fadeInUp}
-                            className="text-base md:text-xl text-gray-300 mb-10 leading-relaxed"
+                            className="text-base md:text-lg text-gray-300 mb-10 leading-relaxed"
                         >
                             Let’s go live with the most reliable House Movers in Abu Dhabi! Contact Global Icon Movers for a free, no obligation moving quote today. We aim to turn your moving experience from chaotic to a breeze.
                         </motion.p>
